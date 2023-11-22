@@ -1,0 +1,17 @@
+// Define variables
+$primary-color: #01B578; // Example: primary color for the header
+$text-color: #fff; // Example: text color
+$button-color: #ffffff; // White button color
+$button-text-color: #01B578; // Text color same as primary color for contrast
+$button-hover-color: darken($button-color, 10%); // Darken the button on hover for effect
+
+.footer {
+    background-color: #01B578;
+    padding: 0;
+    height: 2vh;
+    display: flex;
+    align-items: center;
+    p {
+        transform: scale(0.9);
+    }
+}

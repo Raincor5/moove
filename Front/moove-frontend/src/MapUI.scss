@@ -1,0 +1,149 @@
+.map-ui {
+    position: absolute;
+    z-index: 10000; // High enough to be above map layers
+    height: 100%;
+    width: 100%;
+  
+    .misc-button {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 5px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      right: 10px;
+      bottom: 20px;
+    }
+  
+    .misc-section {
+      position: absolute;
+      bottom: 50px; // Adjust as needed
+      right: 10px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+  
+    .zoom-scroll {
+      position: absolute;
+      top: 0.3 * 100vh; // Adjust as needed
+      left: 10px;
+  
+      .zoom-range {
+        writing-mode: bt-lr; // IE specific style for vertical range
+        -webkit-appearance: slider-vertical; // Webkit specific style
+        width: 18px;
+        height: 150px; // Adjust the height as needed
+      }
+    }
+
+    .deal-switch {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        .deal-switch-type {
+            background-color: rgba(255, 255, 255, 0.8); // Example background color
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px; // Adjust spacing as needed
+        
+            // Add styles for hover, active states if needed
+            &:hover {
+            background-color: #e0e0e0;
+            }
+        }
+    }
+
+    
+
+    .searchArea{    
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 250px;
+        height: auto;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        .search-toggle-button {
+            // Style for the search button
+            background-color: #f0f0f0;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+    
+        .search-box {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 10px;
+    
+            input[type="text"] {
+            margin-right: 5px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            }
+    
+            button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            }
+        }
+    
+        .filter-toggle-button { 
+            background-color: #f0f0f0;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 220px;
+        }
+
+        .filter-options {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            margin-top: 5px;
+            // Additional styles for filter options...
+        }
+
+        
+        .search-toggle-button, .filter-toggle-button {
+            background-color: #4CAF50; // A green shade, adjust as per your color scheme
+            color: white; // Text color for better contrast
+            border: none; // Modern buttons often have no border
+            padding: 10px 15px; // Adequate padding for touch targets
+            border-radius: 5px; // Rounded corners
+            cursor: pointer;
+            margin-bottom: 5px;
+            font-size: 1rem; // Adjust font size as needed
+            font-weight: bold; // Bold text for better readability
+            text-transform: uppercase; // Optional: uppercase for a more styled look
+            letter-spacing: 1px; // Optional: letter spacing for aesthetics
+            transition: background-color 0.3s, color 0.3s; // Smooth transition for hover effect
+
+            &:hover {
+                background-color: darken(#4CAF50, 10%); // Slightly darker on hover
+                // Alternatively, use a different color for hover state
+            }
+        }
+    }
+          
+}
+  
+  

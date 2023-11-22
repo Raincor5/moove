@@ -1,0 +1,48 @@
+// Define variables
+$primary-color: #01B578; // Example: primary color for the header
+$text-color: #fff; // Example: text color
+$button-color: #ffffff; // White button color
+$button-text-color: #01B578; // Text color same as primary color for contrast
+$button-hover-color: darken($button-color, 10%); // Darken the button on hover for effect
+
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $primary-color;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+
+  .header-section {
+    flex: 1 1 33.333%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    &.help-button, &.auth-buttons {
+      button {
+        background-color: $button-color;
+        color: $button-text-color;
+        border: 2px solid $button-text-color;
+        cursor: pointer;
+        padding: 10px 20px;
+        margin: 0 5px;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s, color 0.3s;
+        &:hover {
+            background-color: $button-hover-color;
+          }
+      }
+    }
+
+    &.logo {
+      img {
+        height: 50px; // Example height
+        margin-top: 1px;
+      }
+    }
+  }
+}
