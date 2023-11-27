@@ -1,6 +1,5 @@
 .map-ui {
     position: absolute;
-    z-index: 10000; // High enough to be above map layers
     height: 100%;
     width: 100%;
   
@@ -145,5 +144,8 @@
     }
           
 }
-  
+
+.map-ui > * {
+    z-index: 4500; // High enough to be above map layers
+}
   

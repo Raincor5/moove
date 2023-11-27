@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import './MapUI.scss';
 import { useMap } from 'react-leaflet';
 
-function MapUI() {
+function MapUI({ onDealTypeChange }) {
     // Define Misc button states.
     const [isMiscOpen, setIsMiscOpen] = useState(false);
     // Define Leaflet map constant.
     const map = useMap();
     // Define deal type switch button states.
-    const [dealType, setDealType] = useState("To Rent");
+    const [dealType, setDealType] = useState("to-rent");
     // Define zoom level states. (For the zoom scroll bar)
     const [zoomLevel, setZoomLevel] = useState(map.getZoom());
     // Define search box and filtering states.
@@ -16,6 +16,20 @@ function MapUI() {
     const [isFilterVisible, setIsFilterVisible] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
 
+    // Filtering system
+    const [filters, setFilters] = useState({
+        minPrice: '',
+        maxPrice: '',
+        bedrooms: '',
+        liviingRooms: '',
+        bathrooms: '',
+    });
+
+    const handleFilterChange = (e) => {
+        const newFilters = {...filters, [e.target.name]: e.target.value};
+        setFilters(newFilters);
+        onFilterChange(newFilters);
+    };
 
     // Toggle the Misc button's popup section.
     const toggleMiscSection = (event) => {
@@ -33,7 +47,9 @@ function MapUI() {
 
     // Deal type if condition.
     const toggleDealType = () => {
-        setDealType(dealType === "To Rent" ? "For Sale" : "To Rent");
+        const newDealType = dealType === "to-rent" ? "for-sale" : "to-rent";
+        setDealType(newDealType);
+        onDealTypeChange(newDealType);
     };
 
 
@@ -81,7 +97,7 @@ function MapUI() {
                 type="range"
                 min="0"
                 max="18" // Adjust max zoom level as needed
-                defaultValue={map.getZoom()}
+                // defaultValue={map.getZoom()}
                 value={zoomLevel}
                 onChange={handleZoomChange}
                 className="zoom-range"
@@ -95,7 +111,8 @@ function MapUI() {
                     {dealType}
                 </button>
             </div>
-
+            
+            {/* Search bar and filtering */}
             <div className="searchArea">
                 <button onClick={toggleSearchVisibility} className="search-toggle-button">
                     Search
@@ -125,7 +142,58 @@ function MapUI() {
                         {isFilterVisible && (
                             <div className="filter-options">
                                 {/* Placeholder for filter options */}
-                                <p>Filter options will go here.</p>
+                                <div className="map-ui">
+                                    {/* Price Range */}
+                                    <input
+                                        name="minPrice"
+                                        type="number"
+                                        placeholder="Min Price"
+                                        value={filters.minPrice}
+                                        onChange={handleFilterChange}
+                                    />
+                                    <input
+                                        name="maxPrice"
+                                        type="number"
+                                        placeholder="Max Price"
+                                        value={filters.maxPrice}
+                                        onChange={handleFilterChange}
+                                    />
+
+                                    {/* Bedrooms */}
+                                    <select name="bedrooms" value={filters.bedrooms} onChange={handleFilterChange}>
+                                        <option value="">Any Bedrooms</option>
+                                        {/* Add options for 1, 2, 3, etc. bedrooms */}
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+
+                                    {/* Living Rooms */}
+                                    <select name="livingRooms" value={filters.livingRooms} onChange={handleFilterChange}>
+                                        <option value="">Any Living Rooms</option>
+                                        {/* Add options for living rooms */}
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+
+                                    {/* Bathrooms */}
+                                    <select name="bathrooms" value={filters.bathrooms} onChange={handleFilterChange}>
+                                        <option value="">Any Bathrooms</option>
+                                        {/* Add options for bathrooms */}
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+
+                                    {/* Other UI components */}
+                                    </div>
                                 {/* Implement actual filter options as needed */}
                             </div>
                         )}
